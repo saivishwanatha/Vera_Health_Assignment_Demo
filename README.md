@@ -6,23 +6,33 @@ Expo React Native app that streams SSE from the assignment API, renders markdown
 
 ## Screenshots
 
-1. Primary streaming view  
-   ![Streaming view](docs/I1.jpeg)
+<p align="center">
+  <img src="docs/I1.jpeg" alt="Streaming view" width="720">
+</p>
 
-2. Collapsible section expanded  
-   ![Section expanded](docs/Image1.jpeg)
+<p align="center">
+  <img src="docs/Image1.jpeg" alt="Section expanded" width="720">
+</p>
 
-3. Search steps progress  
-   ![Search steps](docs/Image2.jpeg)
+<p align="center">
+  <img src="docs/Image2.jpeg" alt="Search steps" width="720">
+</p>
 
-4. Final rendered markdown  
-   ![Final markdown](docs/Image3.jpeg)
+<p align="center">
+  <img src="docs/Image3.jpeg" alt="Final markdown" width="720">
+</p>
 
 ## Demo video
 
-<video src="docs/Demo_video.mp4" controls width="720"></video>
+<!-- GitHub sometimes refuses to inline MP4. Try the player first, then provide a link. -->
+<p align="center">
+  <video src="docs/demo-720p.mp4" controls muted width="720"></video>
+</p>
 
-If GitHub does not inline the video due to size, keep this file under 25 MB or link it from a release asset or a short Loom link.
+If the player above does not appear in your browser, use this link instead  
+[▶️ Watch the demo video](docs/demo-720p.mp4)
+
+
 
 ## What this app does
 
