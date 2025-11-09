@@ -63,8 +63,6 @@ export class StreamParser {
       }
       const close = this.state.buffer.indexOf('>', open + 1)
       if (close === -1) {
-        // incomplete tag, keep in buffer for next chunk
-        // move everything before '<' into capture
         this.state.capture += this.state.buffer.slice(0, open)
         this.state.buffer = this.state.buffer.slice(open)
         return
@@ -78,12 +76,11 @@ export class StreamParser {
       const afterIdx = close + 1
       this.state.buffer = this.state.buffer.slice(afterIdx)
 
-      // token must be simple <name> or </name>
+     
       const mClose = token.startsWith('/')
       const name = mClose ? token.slice(1).toLowerCase() : token.toLowerCase()
 
       if (!/^[a-zA-Z][\w-]*$/.test(name)) {
-        // not a valid tag, treat literally
         this.state.capture += `<${token}>`
         continue
       }
@@ -91,14 +88,12 @@ export class StreamParser {
       if (!mClose) {
         // opening
         if (this.state.currentTag === null && this.state.capture.trim().length > 0) {
-          // finalize untagged segment up to here
           this.pushSection('untagged', this.state.capture)
           this.state.capture = ''
         }
         if (this.state.currentTag === null) {
           this.state.currentTag = name
         } else {
-          // nested tag, treat literally to avoid losing content
           this.state.capture += `<${token}>`
         }
       } else {
@@ -108,7 +103,6 @@ export class StreamParser {
           this.state.capture = ''
           this.state.currentTag = null
         } else {
-          // mismatched close, keep literal
           this.state.capture += `</${name}>`
         }
       }
