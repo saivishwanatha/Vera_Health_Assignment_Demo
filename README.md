@@ -1,50 +1,44 @@
-# Welcome to your Expo app 👋
+# Vera Health Assignment Demo
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Expo SDK 54 app that streams SSE from the assignment endpoint  
+Parses tagged sections into collapsible blocks and renders markdown live  
+Shows SEARCH_STEPS progress during streaming
 
-## Get started
+## Live links
 
-1. Install dependencies
+- Web demo  
+  https://githubusername.github.io/vera-mobile-54
 
-   ```bash
-   npm install
-   ```
+- Android preview APK  
+  https://expo.dev/accounts/<acct>/projects/<proj>/builds/<id>
 
-2. Start the app
+- iOS Simulator build  
+  https://expo.dev/accounts/<acct>/projects/<proj>/builds/<id>
 
-   ```bash
-   npx expo start -c
-   ```
+## Screenshots
 
-In the output, you'll find options to open the app in a
+![Chat streaming with collapsible sections](docs/screenshot-chat.png)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Demo video
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+<video src="docs/demo.mp4" controls width="720">
+  Your browser does not support embedded video
+</video>
 
-## Get a fresh project
+If GitHub does not render the video due to size, upload the clip in a GitHub issue and paste the generated user images URL here
 
-When you're ready, run:
+## What this app does
+
+- Connects to  
+  `https://vera-assignment-api.vercel.app/api/stream?prompt=<encoded>`
+- Handles both top level STREAM events and NodeChunk STREAM nodes
+- Parses `<guideline>` and `<drug>` tags into collapsible sections
+- Renders markdown incrementally as chunks arrive
+- Shows SEARCH_STEPS with active and completed states
+
+## Run locally
 
 ```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+npm i
+npx expo start -c
+# press i for iOS or a for Android
