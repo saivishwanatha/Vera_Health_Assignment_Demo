@@ -1,31 +1,47 @@
 # Vera Health Assignment Demo
 
-Expo SDK 54 app that streams SSE from the assignment endpoint  
-Parses tagged sections into collapsible blocks and renders markdown live  
-Shows SEARCH_STEPS progress during streaming
+Expo React Native app that streams SSE from the assignment API, renders markdown as it arrives, and turns tagged blocks like `<guideline>` and `<drug>` into collapsible sections. It also shows live SEARCH_STEPS.
+
 
 
 ## Screenshots
 
+1. Primary streaming view  
+   ![Streaming view](docs/I1.jpeg)
 
+2. Collapsible section expanded  
+   ![Section expanded](docs/Image1.jpeg)
 
+3. Search steps progress  
+   ![Search steps](docs/Image2.jpeg)
+
+4. Final rendered markdown  
+   ![Final markdown](docs/Image3.jpeg)
 
 ## Demo video
 
+<video src="docs/Demo_video.mp4" controls width="720"></video>
 
-
-If GitHub does not render the video due to size, upload the clip in a GitHub issue and paste the generated user images URL here
+If GitHub does not inline the video due to size, keep this file under 25 MB or link it from a release asset or a short Loom link.
 
 ## What this app does
 
 - Connects to  
-  `https://vera-assignment-api.vercel.app/api/stream?prompt=<encoded>`
-- Handles both top level STREAM events and NodeChunk STREAM nodes
-- Parses `<guideline>` and `<drug>` tags into collapsible sections
-- Renders markdown incrementally as chunks arrive
-- Shows SEARCH_STEPS with active and completed states
+  `https://vera-assignment-api.vercel.app/api/stream?prompt=<encoded-prompt>`
+- Handles both top level `{"type":"STREAM"}` chunks and `{"type":"NodeChunk","content":{"nodeName":"STREAM"}}`
+- Parses `<guideline>` and `<drug>` into collapsible cards
+- Renders text outside tags as normal markdown
+- Displays SEARCH_STEPS with active and done states
+- Batches UI updates with requestAnimationFrame for smooth rendering
 
-## Run locally
+## Quick start
+
+Requirements
+
+- Node 18 or 20
+- Xcode for iOS simulator or Android Studio for emulator
+
+Run
 
 ```bash
 npm i
